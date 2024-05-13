@@ -1,16 +1,19 @@
+// src/app/services/carro.service.ts
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { Carro } from '../models/carro';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarroService {
-  private baseUrl = 'http://localhost:8080/senac-20241-backend-exemplos/rest/carro/filtro';
+  private url = 'http://localhost:8080/senac-20241-backend-exemplos/rest/carro/filtro'; // URL do seu endpoint
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  getCarros(filtro: any): Observable<any> {
-    return this.http.post<any>(this.baseUrl, filtro);
+  getCarros(filtro: any): Observable<Carro[]> {
+    // Chamada real da API
+    return this.http.post<Carro[]>(this.url, filtro);
   }
 }

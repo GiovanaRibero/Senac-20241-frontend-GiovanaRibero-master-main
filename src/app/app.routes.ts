@@ -1,13 +1,23 @@
 import { NgModule } from '@angular/core';
-import { Routes } from '@angular/router';
-
-export const routes: Routes = [
-
-    { path: '', redirectTo: 'cartas', pathMatch: 'full'},
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
+import { AppComponent } from './app.component'; 
+const routes: Routes = [
+    { path: '', redirectTo: 'carros', pathMatch: 'full' },
     {
-        path: 'cartas',
-        loadChildren: () => 
-            import('./cartas/cartas.module').then((m) => m.CartasModule),
-
-    },
+        path: 'carros',
+        loadChildren: () => import('./carros/carros.module').then(m => m.CarrosModule)
+    }
 ];
+
+@NgModule({
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(routes)
+  ],
+  declarations: [
+    AppComponent 
+  ],
+  bootstrap: [AppComponent] 
+})
+export class AppModule { }

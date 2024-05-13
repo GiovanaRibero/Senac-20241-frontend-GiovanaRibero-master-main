@@ -1,1 +1,29 @@
-<p>carros works!</p>
+<div>
+    <input type="text" [(ngModel)]="filtro.modelo" placeholder="Modelo">
+    <input type="text" [(ngModel)]="filtro.nomeMarca" placeholder="Nome da Marca">
+    <input type="number" [(ngModel)]="filtro.anoInicial" placeholder="Ano Inicial">
+    <input type="number" [(ngModel)]="filtro.anoFinal" placeholder="Ano Final">
+    <button (click)="consultarCarros()">Buscar</button>
+  
+    <table *ngIf="carros.length > 0">
+      <tr>
+        <th>Placa</th>
+        <th>Modelo</th>
+        <th>Montadora</th>
+        <th>Ano</th>
+        <th>Valor</th>
+      </tr>
+      <tr *ngFor="let carro of carros">
+        <td>{{ carro.placa }}</td>
+        <td>{{ carro.modelo }}</td>
+        <td>{{ carro.montadora.nome }}</td>
+        <td>{{ carro.ano }}</td>
+        <td>R$ {{ carro.valor }}</td>
+      </tr>
+    </table>
+  
+    <div *ngIf="carros.length === 0">
+      Nenhum carro encontrado.
+    </div>
+  </div>
+  
