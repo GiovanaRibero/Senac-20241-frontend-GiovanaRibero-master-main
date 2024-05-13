@@ -1,0 +1,13 @@
+<div>
+    <select [(ngModel)]="selectedMontadora" (ngModelChange)="onMontadoraChange()">
+      <option value="">Selecione uma montadora</option>
+      <option *ngFor="let montadora of montadoras" [ngValue]="montadora.id">
+        {{ montadora.nome }} ({{ montadora.pais }})
+      </option>
+    </select>
+    <button (click)="consultarEstoque()">Consultar estoque</button>
+  </div>
+  <div *ngIf="estoque !== null">
+    Total de veículos: {{ estoque }}
+  </div>
+  
